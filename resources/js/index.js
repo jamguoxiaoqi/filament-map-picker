@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if ('geolocation' in navigator) {
                     navigator.geolocation.getCurrentPosition(async position => {
                         const currentPosition = new LF.LatLng(position.coords.latitude, position.coords.longitude);
-                        await this.map.flyTo(currentPosition);
+                        await this.map.flyTo(currentPosition, this.map.getZoom(), { animate: false });
 
                         this.updateLocation();
                         this.updateMarker();
@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
 
             refreshMap: function() {
-                this.map.flyTo(this.getCoordinates());
+                this.map.flyTo(this.getCoordinates(), this.map.getZoom(), { animate: false });
                 this.updateMarker();
             }
         };
